@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CourseProject.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Show all comments</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer.AnswerDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Question.QuestionTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentDetails)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer.AnswerDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Question.QuestionTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentDetails)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,28 @@
+﻿
+@model System.Collections.Generic.List<string>
+@{
+    ViewBag.Title = "AllRoles";
+}
+
+<h2>All Roles</h2>
+
+<ol>
+    @foreach (var r in Model)
+    {
+        <li>
+            @r
+        </li>
+    }
+</ol>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">@Html.ActionLink("Add role page", "AddRole", "Admins")</th>
+            <th scope="col">@Html.ActionLink("Add user to role page", "AddUserToRole", "Admins")</th>
+            <th scope="col">@Html.ActionLink("Show user's role page", "GetAllRolesOfUser", "Admins")</th>
+        </tr>
+    </thead>
+</table>

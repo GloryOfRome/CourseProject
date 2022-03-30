@@ -1,0 +1,136 @@
+﻿@model PagedList.IPagedList<CourseProject.Models.Question>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Questions</h2>
+
+<p>
+    <button type="button" class="btn btn-dark">
+        @Html.ActionLink("Ask Question", "Create")
+    </button>
+</p>
+
+@using (Html.BeginForm("Index", "Questions", FormMethod.Get))
+{
+    <p>
+        Find by Tag or Question: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            <button type="button" class="btn btn-dark">
+                @Html.ActionLink("Newest/Oldest", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+            </button>
+        </th>
+        <th>
+            <button type="button" class="btn btn-dark">
+                @Html.ActionLink("Most answered", "Index", new { sortOrder = ViewBag.AnswerSortParm, currentFilter = ViewBag.CurrentFilter })
+            </button>
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div class="question-summary" id="question-summary-67344114">
+
+                    <div class="statscontainer">
+                        <div class="stats">
+                            <div class="vote">
+                                <div class="votes">
+                                    <span class="vote-count-post ">
+                                        <strong>@(item.UpVote + item.DownVote)</strong>
+                                    </span>
+                                    <div class="viewcount">
+                                        votes
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vote">
+                                <div class="votes">
+                                    <span class="vote-count-post ">
+                                        <strong>@item.Answers.Count()</strong>
+                                    </span>
+                                    <div class="viewcount">
+                                        answers
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="summary">
+
+                        <h3>
+                            <a href="/Questions/QuestionPage?title=@Html.DisplayFor(modelItem => item.QuestionTitle)" class="question-hyperlink">
+                                @Html.DisplayFor(modelItem => item.QuestionTitle)
+                            </a>
+                        </h3>
+                        <div class="excerpt">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                        
+                        <div class="tags t-c t-algorithm t-sorting t-gnuplot">
+                            <a href="/Questions/Tagged?tag=@Html.DisplayFor(modelItem => item.Tag)" class="post-tag" title="show questions tagged 'c'" rel="tag">@Html.DisplayFor(modelItem => item.Tag)</a>
+                        </div>
+
+                        <div class="started">
+                            <div class="user-info">
+                                <div class="action-time">
+                                    asked
+                                    <span class="relativetime">
+                                        @item.DateTime
+                                    </span>
+                                </div>
+                                <div class="user-gravatar32">
+                                    <div class="gravatar-wrapper-32">
+                                        <img src="https://lh4.googleusercontent.com/-og9hMLvoNAw/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckQk5FTBOshH6BHkg7Pjkqzso_LFQ/photo.jpg?sz=32" alt="" width="32" height="32" class="bar-sm">
+                                    </div>
+                                </div>
+                                <div class="user-details">
+                                    @Html.DisplayFor(modelItem => item.User.UserName)
+                                    <div class="-flair" style="display:flex; ">
+                                        <span class="reputation-score" title="reputation score " dir="ltr">
+                                        @Html.DisplayFor(modelItem => item.User.Reputation)
+                                        </span>
+                                        <div class="badge1" title="gold badges" style="height: 10px; width: 10px; background-color: yellow; border-radius: 50%; padding: 6px; margin: 3px;"></div>
+                                        <span class="badgecount">3</span>
+
+                                        <span class="badge2" title="silver badges"  style="height: 10px; width: 10px; background-color: silver; border-radius: 50%; padding: 6px; margin: 3px;"></span>
+                                        <span class="badgecount">6</span>
+
+                                        <span class="badge3" title="bronze badges"  style="height: 10px; width: 10px; background-color: rosybrown; border-radius: 50%; padding: 6px; margin: 3px;"></span>
+                                        <span class="badgecount">9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+    
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

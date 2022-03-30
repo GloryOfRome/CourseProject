@@ -1,0 +1,179 @@
+﻿.btn-primary{
+    color:white;
+    text-decoration:none;
+}
+
+.add-comment {
+    width: 76%;
+    margin: auto;
+}
+
+.flush-left .question-summary {
+    width: 100%;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+
+.question-summary {
+    display: flex;
+    padding: 12px 8px;
+    float: none;
+    width: 100%;
+}
+
+.statscontainer {
+    margin-right: 16px;
+    /*width: 58px;*/
+    flex-basis: 20%;
+    float: none;
+}
+
+.summary {
+    flex-basis: 70%;
+}
+
+h3{
+    margin-top: 0px;
+}
+
+.vote-count-post {
+    padding-left: 9px;
+}
+
+.vote-count-size {
+    padding-left: 13px;
+    font-size: 26px;
+}
+
+.user-details {
+    padding-top: 13px;
+}
+
+.outer {
+    display: flex;
+    padding-top: 19px;
+}
+
+.inner-left{
+    flex-basis:9%;
+}
+
+.inner-right{
+    flex-basis:70%;
+}
+
+.buttom-style {
+    background-color: white;
+    border: none;
+}
+
+.question-ul {
+    list-style-type: none;
+    padding-left: 33px;
+}
+
+.question-li {
+    font-size: 23px;
+}
+
+
+
+.stats {
+    margin: 0;
+    width: 58px;
+}
+
+.views {
+    padding-top: 4px;
+    /*text-align: center;*/
+}
+
+.post-tag, .geo-tag, .container .chosen-choices .search-choice, .container .chosen-container-multi .chosen-choices li.search-choice {
+    color: var(--theme-tag-color);
+    background-color: var(--theme-tag-background-color);
+    border-color: var(--theme-tag-border-color);
+}
+
+.post-tag, .moderator-tag, .required-tag, .disliked-tag, .company-tag, .geo-tag, .geo-tag, .container .chosen-choices .search-choice, .container .chosen-container-multi .chosen-choices li.search-choice {
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+}
+
+.question-summary .started {
+    color: var(--black-500);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.started {
+    width: 200px;
+    float: right;
+    line-height: 18px;
+}
+
+.question {
+    width: 200px;
+    float: right;
+    line-height: 18px;
+    margin: -79px 23px;
+}
+
+hr {
+    margin-top: 6px;
+    margin-bottom: 3px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
+
+.user-info {
+    position: relative;
+}
+
+.user-gravatar32 {
+    height: 20px;
+    width: 20px;
+    background-color: aquamarine;
+}
+
+
+
+
+
+
+
+
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
